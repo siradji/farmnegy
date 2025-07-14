@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import Image from "next/image"
 
@@ -8,11 +9,22 @@ function SectionWithBg({ bgUrl, subtitle, title, description, icons }: { bgUrl: 
     name: string,
     image: any
 }> }) {
+    
 
     return (
-        <section style={{ backgroundImage: `url(${bgUrl})` }} className={`bg-no-repeat bg-cover relative h-screen w-full`}>
-            <div className="absolute inset-0 z-10 bg-black/60 backdrop-brightness-90 shadow-inner"></div>
-            <div className="flex text-center pt-20 px-8 flex-col z-20 relative h-full w-full justify-center items-center">
+        <section
+        className="relative h-full w-full bg-cover bg-center flex items-center justify-center px-4"
+        style={{ backgroundImage: `url(${bgUrl})` }}
+      >
+        <div className="absolute inset-0 bg-black/50 z-0" />
+        <motion.div
+          className="flex pt-20 px-8 flex-col h-full w-full justify-center items-center relative z-10 max-w-4xl text-center text-white space-y-4"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+            
                 <div className="flex flex-col justify-center items-center">
                     <span className="uppercase text-3xl text-white mb-2">{subtitle}</span>
                     <div className="w-10 h-px bg-white" />
@@ -31,7 +43,7 @@ function SectionWithBg({ bgUrl, subtitle, title, description, icons }: { bgUrl: 
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     )
 }
