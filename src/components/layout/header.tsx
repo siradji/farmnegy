@@ -1,100 +1,139 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  Info,
+  Briefcase,
+  HeartHandshake,
+  LineChart,
+} from "lucide-react";
 import { useRouter } from "nextjs-toploader/app";
 
-export const Header = ({
-  hasScrolled,
-  setHasScrolled,
-}: {
-  hasScrolled: boolean;
-  setHasScrolled: (value: boolean) => void;
-}) => {
+export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 10);
-    };
-
-    handleScroll(); // Run once on mount
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [setHasScrolled]);
+  const menuItems = [
+    { name: "Home", icon: Home, href: "/" },
+    { name: "About Company", icon: Info, href: "/about" },
+    { name: "Major Business", icon: Briefcase, href: "/business" },
+    { name: "Sustainability", icon: HeartHandshake, href: "/sustainability" },
+    { name: "Investments", icon: LineChart, href: "/investment" },
+  ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between
         px-[16px] md:px-8 py-4 transition-all duration-300
-        ${hasScrolled ? "bg-white shadow-md" : "bg-transparent"}
+        ${hasScrolled ? "!bg-white shadow-md" : "bg-transparent"}
       `}
-    >
-      {/* Logo */}
-      <Link href="/">
-        <Image
-          width={160}
-          height={30}
-          src={hasScrolled ? "/farmnegy-all-black.PNG" : "/farmnegy-all-white.PNG"}
-          alt="Logo"
-          priority
-        />
-      </Link>
+      >
+        {/* Logo */}
+        <Link href="/">
+          <Image
+            width={160}
+            height={30}
+            src={
+              hasScrolled
+                ? "/farmnegy-all-black.PNG"
+                : "/farmnegy-all-white.PNG"
+            }
+            alt="Logo"
+            priority
+          />
+        </Link>
 
-      {/* Desktop Nav */}
-      <nav className="hidden md:flex items-center">
-        <ul className="flex flex-row items-center space-x-8 mr-8">
-          {["About Company", "Major Business", "Sustainable Management", "Investment Information"].map((text, i) => (
-            <li key={i}>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center">
+          <ul className="flex flex-row items-center space-x-8 mr-8">
+            {menuItems.map((item, i) => (
+              <li key={i}>
+                <Link
+                  href={item.href}
+                  className={`font-light text-2xl transition-colors duration-300 ${
+                    hasScrolled
+                      ? "text-black hover:text-gray-600"
+                      : "text-white hover:text-gray-300"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Language and Mobile Menu Icon */}
+        <div className="flex items-center gap-6">
+          <select
+            className={`text-2xl bg-transparent outline-none appearance-none ${
+              hasScrolled ? "text-black" : "text-white"
+            }`}
+          >
+            <option value="EN">EN</option>
+            <option value="DE">DE</option>
+            <option value="CN">CN</option>
+          </select>
+
+          <div
+            onClick={toggleMobileMenu}
+            className={`cursor-pointer ${
+              hasScrolled ? "text-black" : "text-white"
+            }`}
+          >
+            <Menu className="md:h-14 md:w-12 w-8 h-8" />
+          </div>
+        </div>
+      </header>
+
+      {/* Slide-in Menu */}
+      <aside
+        className={`fixed top-0 right-0 h-screen z-[99] transition-transform duration-300 bg-white shadow-lg
+        ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
+        w-full md:w-[40%]`}
+      >
+        {/* Close Button */}
+        <div className="flex justify-end p-4">
+          <X
+            className="h-8 w-8 text-gray-700 cursor-pointer"
+            onClick={toggleMobileMenu}
+          />
+        </div>
+
+        {/* Menu Content */}
+        <nav className="flex flex-col px-8 gap-6 mt-8">
+          {menuItems.map((item, i) => {
+            const Icon = item.icon;
+            return (
               <Link
-                href="/"
-                className={`font-light text-2xl transition-colors duration-300 ${
-                  hasScrolled ? "text-black hover:text-gray-600" : "text-white hover:text-gray-300"
-                }`}
+                key={i}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-4 text-gray-800 hover:text-blue-600 text-xl transition"
               >
-                {text}
+                <Icon className="w-6 h-6" />
+                <span>{item.name}</span>
               </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+            );
+          })}
+        </nav>
+      </aside>
 
-      {/* Language Selector & Mobile Toggle */}
-      <div className="flex items-center gap-6">
-        <select
-          className={`text-2xl bg-transparent outline-none appearance-none ${
-            hasScrolled ? "text-black" : "text-white"
-          }`}
-        >
-          <option value="EN">EN</option>
-          <option value="DE">DE</option>
-          <option value="CN">CN</option>
-        </select>
-
-        {/* Mobile Menu Icon */}
-        <div
-          onClick={toggleMobileMenu}
-          className={`cursor-pointer ${hasScrolled ? "text-black" : "text-white"}`}
-        >
-          <Menu className="h-8 w-8" />
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
+      {/* Optional backdrop (mobile only) */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white shadow-md py-4 md:hidden z-50">
-          <nav className="flex flex-col items-center space-y-4">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-black text-2xl">About</Link>
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-black text-2xl">Business</Link>
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-black text-2xl">Sustainability</Link>
-          </nav>
-        </div>
+        <div
+          className="fixed inset-0 bg-black/50 z-[98] md:hidden"
+          onClick={toggleMobileMenu}
+        />
       )}
-    </header>
+    </>
   );
 };

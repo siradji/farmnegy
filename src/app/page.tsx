@@ -58,16 +58,24 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasScrolled, setHasScrolled] = useState(false);
 
+  const mainRef = useRef<HTMLDivElement | null>(null);
+
+
   // Detect scroll position
   useEffect(() => {
+    const el = mainRef.current;
+    if (!el) return;
+  
     const handleScroll = () => {
-      setHasScrolled(window.scrollY > 10);
+      setHasScrolled(el.scrollTop > 10);
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  
+    el.addEventListener("scroll", handleScroll);
+    handleScroll(); // Trigger on mount
+  
+    return () => el.removeEventListener("scroll", handleScroll);
   }, []);
-
+  
   // Set up scroll spy with IntersectionObserver
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -99,8 +107,8 @@ export default function Home() {
 
   return (
     <>
-      <Header hasScrolled={hasScrolled} setHasScrolled={setHasScrolled} />
-      <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative">
+      <Header hasScrolled={hasScrolled} />
+      <main ref={mainRef} className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative">
         {sectionsData.map((section, index) => (
           <section
             key={section.id}
@@ -108,7 +116,7 @@ export default function Home() {
             ref={(el) => (sectionRefs.current[index] = el)}
             className="h-screen snap-start"
           >
-            <SectionWithBg {...section} />
+            <SectionWithBg {...section} id={index + 1} />
           </section>
         ))}
         <div
@@ -126,7 +134,7 @@ export default function Home() {
       </main>
 
       {/* Dot navigation */}
-      <div className="fixed flex flex-col gap-2 top-1/2 right-20 -translate-y-1/2 z-50 space-y-4">
+      <div className="fixed flex-col hidden md:flex gap-2 top-1/2 right-20 -translate-y-1/2 z-50 space-y-4">
         {sectionsData.map((_, i) => (
           <div className={`flex gap-2 items-center ${
             activeIndex === i ? "text-white" : "text-gray-400"
