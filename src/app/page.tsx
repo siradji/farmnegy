@@ -111,7 +111,7 @@ export default function Home() {
           <section
             key={section.id}
             id={section.id}
-            ref={(el) => (sectionRefs.current[index] = el)}
+            ref={(el) => (sectionRefs.current[index] = el) as any}
             className="h-screen snap-start"
           >
             <SectionWithBg {...section} id={index + 1} />
