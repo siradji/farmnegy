@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import youtube from "@/assets/icons/youtube.svg"
+import x from "@/assets/icons/x.svg"
+
 export const AppFooter = () => {
     return (
         <footer
@@ -35,7 +38,7 @@ export const AppFooter = () => {
                     <Image
                         width={24}
                         height={24}
-                        src={require('@/assets/icons/x.svg')}
+                        src={x}
                         alt="X"
                         priority
                     />
@@ -44,7 +47,7 @@ export const AppFooter = () => {
                     <Image
                         width={24}
                         height={24}
-                        src={require('@/assets/icons/youtube.svg')}
+                        src={youtube}
                         alt="Youtube"
                         priority
                     />

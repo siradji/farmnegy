@@ -12,11 +12,9 @@ import {
   HeartHandshake,
   LineChart,
 } from "lucide-react";
-import { useRouter } from "nextjs-toploader/app";
 
 export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const router = useRouter();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 

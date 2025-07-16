@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { JSX, SVGProps, useEffect, useRef, useState } from "react";
 import { Header } from "@/components/layout/header";
 import SectionWithBg from "@/components/sections/sectionWithBg";
 import CardsSection from "@/components/sections/cardsSection";
@@ -16,6 +16,8 @@ import {
   HeartHandshakeIcon,
   TableIcon,
 } from "lucide-react";
+
+
 
 const icons1 = [
   { name: "Food<br /> Bussiness", image: TableIcon },
@@ -111,7 +113,10 @@ export default function Home() {
           <section
             key={section.id}
             id={section.id}
-            ref={(el) => (sectionRefs.current[index] = el) as any}
+            ref={(el) => {
+              sectionRefs.current[index] = el;
+            }}
+            
             className="h-screen snap-start"
           >
             <SectionWithBg {...section} id={index + 1} />
@@ -134,7 +139,7 @@ export default function Home() {
       
       <div className="fixed flex-col hidden md:flex gap-2 top-1/2 right-20 -translate-y-1/2 z-50 space-y-4">
         {sectionsData.map((_, i) => (
-          <div className={`flex gap-2 items-center ${
+          <div key={i} className={`flex gap-2 items-center ${
             activeIndex === i ? "text-white" : "text-gray-400"
           }`}>
             <span className={`${activeIndex === i ? "text-white" : "text-transparent"}`}>{_.subtitle as any}</span>

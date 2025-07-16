@@ -1,7 +1,9 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
+
+import quick_more from "@/assets/icons/quick_more.png"
 
 
-function Card({ image, title, content }: { image: any, title: string, content: string }) {
+function Card({ image, title, content }: { image: StaticImageData, title: string, content: string }) {
 
     return (
         <div className="border border-[#e4e4e4] bg-white w-full">
@@ -10,7 +12,7 @@ function Card({ image, title, content }: { image: any, title: string, content: s
                 <h4 className="font-bold text-2xl">{title}</h4>
                 <p className="my-6 leading-5" dangerouslySetInnerHTML={{ __html: content }} />
 
-                <Image alt={title} src={require("@/assets/icons/quick_more.png")} width={28} height={16} />
+                <Image alt={title} src={quick_more} width={28} height={16} />
             </div>
         </div>
     )
