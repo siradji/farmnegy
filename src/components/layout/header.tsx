@@ -51,7 +51,6 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center">
           <ul className="flex flex-row items-center space-x-8 mr-8">
             {menuItems.map((item, i) => (
@@ -71,7 +70,7 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
           </ul>
         </nav>
 
-        {/* Language and Mobile Menu Icon */}
+      
         <div className="flex items-center gap-6">
           <select
             className={`text-2xl bg-transparent outline-none appearance-none ${
@@ -94,13 +93,12 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
         </div>
       </header>
 
-      {/* Slide-in Menu */}
+
       <aside
         className={`fixed top-0 right-0 h-screen z-[99] transition-transform duration-300 bg-white shadow-lg
         ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
         w-full md:w-[40%]`}
       >
-        {/* Close Button */}
         <div className="flex justify-end p-4">
           <X
             className="h-8 w-8 text-gray-700 cursor-pointer"
@@ -108,7 +106,6 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
           />
         </div>
 
-        {/* Menu Content */}
         <nav className="flex flex-col px-8 gap-6 mt-8">
           {menuItems.map((item, i) => {
             const Icon = item.icon;
@@ -127,7 +124,6 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
         </nav>
       </aside>
 
-      {/* Optional backdrop (mobile only) */}
       {mobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[98] md:hidden"

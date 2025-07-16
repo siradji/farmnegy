@@ -60,8 +60,6 @@ export default function Home() {
 
   const mainRef = useRef<HTMLDivElement | null>(null);
 
-
-  // Detect scroll position
   useEffect(() => {
     const el = mainRef.current;
     if (!el) return;
@@ -71,12 +69,12 @@ export default function Home() {
     };
   
     el.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger on mount
+    handleScroll(); 
   
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
   
-  // Set up scroll spy with IntersectionObserver
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -90,7 +88,7 @@ export default function Home() {
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of section is visible
+        threshold: 0.5, 
       }
     );
 
@@ -133,7 +131,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Dot navigation */}
+      
       <div className="fixed flex-col hidden md:flex gap-2 top-1/2 right-20 -translate-y-1/2 z-50 space-y-4">
         {sectionsData.map((_, i) => (
           <div className={`flex gap-2 items-center ${

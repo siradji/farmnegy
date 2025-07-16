@@ -30,15 +30,7 @@ export const AppFooter = () => {
             <div>
                 <div className="text-right hidden md:block text-white text-sm">Community</div>
                 <div className="flex gap-4 mt-2">
-                    <div className="w-[56px] h-[56px] rounded-full bg-no-repeat flex justify-center items-center bg-right border border-white">
-                    <Image
-                        width={24}
-                        height={24}
-                        src={require('@/assets/icons/discord.svg')}
-                        alt="Discord"
-                        priority
-                    />
-                    </div>
+                    
                     <div className="w-[56px] h-[56px] rounded-full bg-no-repeat flex justify-center items-center bg-right border border-white">
                     <Image
                         width={24}
