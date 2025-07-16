@@ -1,6 +1,6 @@
 "use client";
 
-import { JSX, SVGProps, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/layout/header";
 import SectionWithBg from "@/components/sections/sectionWithBg";
 import CardsSection from "@/components/sections/cardsSection";
@@ -142,7 +142,7 @@ export default function Home() {
           <div key={i} className={`flex gap-2 items-center ${
             activeIndex === i ? "text-white" : "text-gray-400"
           }`}>
-            <span className={`${activeIndex === i ? "text-white" : "text-transparent"}`}>{_.subtitle as any}</span>
+            <span className={`${activeIndex === i ? "text-white" : "text-transparent"}`}>{_.subtitle}</span>
           <button
             key={i}
             onClick={() =>
