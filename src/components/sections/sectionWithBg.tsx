@@ -46,7 +46,7 @@ function SectionWithBg({
       <div className="absolute inset-0 bg-black/50 z-0" />
       <motion.div
         ref={ref}
-        className="flex md:pt-20 pt-15 px-4 md:px-8 flex-col h-full w-full justify-center items-center relative z-10 max-w-4xl text-center text-white space-y-4"
+        className="flex md:pt-20 pt-14 px-4 md:px-8 flex-col h-full w-full justify-center items-center relative z-10 max-w-4xl text-center text-white space-y-4"
         initial={{ opacity: 0, y: 40 }}
         animate={controls}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}

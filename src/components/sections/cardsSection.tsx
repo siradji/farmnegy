@@ -54,9 +54,9 @@ const cards = [
 
 function CardsSection() {
   return (
-    <section className="p-8">
+    <section className="md:p-8 p-4">
       <motion.div
-        className="flex gap-6 sm:flex-row flex-col"
+        className="grid lg:grid-cols-4 grid-cols-2 gap-4 md:gap-6 lg:gap-y-0"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
