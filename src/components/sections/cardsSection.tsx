@@ -34,21 +34,25 @@ const cards = [
     image: cardImage1,
     title: "About Company",
     content: "Company creating a happy future<br /> with healthy food culture.",
+    link: "/about"
   },
   {
     image: cardImage2,
     title: "About Company",
     content: "Company creating a happy future<br /> with healthy food culture.",
+    link: "/about"
   },
   {
     image: cardImage3,
     title: "About Company",
     content: "Company creating a happy future<br /> with healthy food culture.",
+    link: "/about"
   },
   {
     image: cardImage5,
     title: "About Company",
     content: "Company creating a happy future<br /> with healthy food culture.",
+    link: "/about"
   },
 ];
 
@@ -64,7 +68,7 @@ function CardsSection() {
       >
         {cards.map((card, index) => (
           <motion.div className="w-full" key={index} variants={cardVariants}>
-            <Card content={card.content} image={card.image} title={card.title} />
+            <Card linkUrl={card.link} content={card.content} image={card.image} title={card.title} />
           </motion.div>
         ))}
       </motion.div>
