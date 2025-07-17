@@ -1,7 +1,4 @@
-"use client";
-
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import cardImage1 from "@/assets/homepage/last_img_01.jpg";
 import cardImage2 from "@/assets/homepage/last_img_02.jpg";
 import cardImage3 from "@/assets/homepage/last_img_03.jpg";
@@ -10,7 +7,7 @@ import Card from "../ui/card";
 import type { Variants } from "framer-motion";
 
 // Animation variants
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: {},
   show: {
     transition: {
@@ -19,6 +16,7 @@ const containerVariants: Variants = {
   },
 };
 
+
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: {
@@ -26,7 +24,7 @@ const cardVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+      ease: [0.25, 0.1, 0.25, 1],
     },
   },
 };
@@ -55,26 +53,14 @@ const cards = [
 ];
 
 function CardsSection() {
-  const ref = useRef(null);
-  const controls = useAnimation();
-  const isInView = useInView(ref, { amount: 0.3 });
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("show");
-    } else {
-      controls.start("hidden"); // reset when out of view
-    }
-  }, [isInView, controls]);
-
   return (
     <section className="p-8">
       <motion.div
-        ref={ref}
-        className="grid lg:gap-y-0 gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1"
+        className="flex gap-6 sm:flex-row flex-col"
         variants={containerVariants}
         initial="hidden"
-        animate={controls}
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
       >
         {cards.map((card, index) => (
           <motion.div className="w-full" key={index} variants={cardVariants}>
