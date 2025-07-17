@@ -60,7 +60,7 @@ function CardsSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {cards.map((card, index) => (
           <motion.div className="w-full" key={index} variants={cardVariants}>
