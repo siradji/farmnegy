@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { LucideIcon } from "lucide-react";
-
-import downIcon from "@/assets/icons/btn_down.png"
+import downIcon from "@/assets/icons/btn_down.png";
 
 interface SectionWithBgProps {
   id: number;
@@ -26,6 +26,18 @@ function SectionWithBg({
   icons,
   id,
 }: SectionWithBgProps) {
+  const controls = useAnimation();
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref, { amount: 0.4 });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({ opacity: 1, y: 0 });
+    } else {
+      controls.start({ opacity: 0, y: 40 });
+    }
+  }, [isInView, controls]);
+
   return (
     <section
       className="relative h-full w-full bg-cover bg-center flex items-center justify-center px-4"
@@ -33,11 +45,11 @@ function SectionWithBg({
     >
       <div className="absolute inset-0 bg-black/50 z-0" />
       <motion.div
+        ref={ref}
         className="flex pt-20 px-8 flex-col h-full w-full justify-center items-center relative z-10 max-w-4xl text-center text-white space-y-4"
         initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        animate={controls}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <div className="flex flex-col justify-center items-center">
           <span className="uppercase md:text-3xl text-xl text-white mb-2">{subtitle}</span>

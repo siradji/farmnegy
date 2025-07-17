@@ -49,7 +49,7 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center">
+        <nav className="hidden lg:flex items-center">
           <ul className="flex flex-row items-center space-x-8 mr-8">
             {menuItems.map((item, i) => (
               <li key={i}>

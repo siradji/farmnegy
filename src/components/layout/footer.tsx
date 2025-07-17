@@ -7,7 +7,7 @@ import x from "@/assets/icons/x.svg"
 export const AppFooter = () => {
     return (
         <footer
-            className="sticky border border-top-[1px] border-[#DDDDDD] top-0 z-50 py-[calc(--spacing(6)+2px)] bg-[#000] lg:px-28 md:px-16 px-md  shadow-sm">
+            className="sticky border border-top-[1px] border-[#DDDDDD] top-0 z-50 py-[calc(--spacing(6)+2px)] bg-[#000] lg:px-28 md:px-16  px-[16px]  shadow-sm">
             <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between">
             <div className="flex flex-col">
                 <Link className="mb-4" href="/">
