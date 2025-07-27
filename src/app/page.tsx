@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/layout/header";
 import SectionWithBg from "@/components/sections/sectionWithBg";
-import CardsSection from "@/components/sections/cardsSection";
 import { AppFooter } from "@/components/layout/footer";
 
 import bg1 from "@/assets/homepage/wheat.jpg";
