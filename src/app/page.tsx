@@ -11,17 +11,19 @@ import bg2 from "@/assets/homepage/wheat2.jpg";
 import bg3 from "@/assets/homepage/woman.jpg";
 
 import {
-  ForkKnife,
   HandshakeIcon,
   HeartHandshakeIcon,
   TableIcon,
+
 } from "lucide-react";
 
 
 
 const icons1 = [
-  { name: "Food<br /> Bussiness", image: TableIcon },
-  { name: "Ingredient<br /> Bussiness", image: ForkKnife },
+  { name: "<h1>Sesame seeds</h1>", image: TableIcon },
+  { name: "Cocoa", image: TableIcon },
+  { name: "Cashew nuts", image: TableIcon },
+  { name: "Soy", image: TableIcon },
 ];
 
 const icons2 = [
@@ -33,25 +35,25 @@ const sectionsData = [
   {
     id: "section1",
     bgUrl: bg1.src,
-    subtitle: "Farm",
-    title: "The Road Of Happiness walk with you",
-    description: "this road of happiness walk with you all along you dont know",
+    subtitle: "Premium quality",
+    title: "Reliable Procurement & Export of Premium Agro Commodities",
+    description: "we specialize in sourcing and supplying Africa’s finest agro commodities — sesame, cocoa, soy, and cashew — to markets across Asia and Europe. ",
   },
   {
     id: "section2",
     icons: icons1,
     bgUrl: bg2.src,
-    subtitle: "Farm",
-    title: "Best Way To The Best",
-    description: "Thinking, a thought of not remaining anywhere <br /> is the best way to the best.",
+    subtitle: "What we supply",
+    title: "Consistent Quality. Reliable Supply",
+    description: "Farmnegy delivers high-quality, export-ready agro commodities tailored to meet the demands of manufacturers, processors, and bulk buyers across Asia and Europe. Our products are sourced with strict quality control and handled through efficient logistics for timely delivery and competitive pricing.",
   },
   {
     id: "section3",
     icons: icons2,
     bgUrl: bg3.src,
-    subtitle: "Farm",
-    title: "Shortcut to happiness is the road with a company.",
-    description: "Share together, happy together, and live together. <br /> The word together is the way to the happiness.",
+    subtitle: "Why Farmnegy?",
+    title: "Why Farmnegy Is Your Trusted Agro Commodity Partner",
+    description: "At FarmNegy, we go beyond supply — we build lasting trade partnerships. Our strength lies in a reliable sourcing network across Africa, rigorous quality control processes, and a deep understanding of global commodity markets. Whether you're a manufacturer, processor, or bulk trader, we provide export-ready sesame, cocoa, soy, and cashew products tailored to your requirements. "
   },
 ];
 
@@ -122,12 +124,12 @@ export default function Home() {
             <SectionWithBg {...section} id={index + 1} />
           </section>
         ))}
-        <div
-          
-          className="snap-start"
-        >
-          <CardsSection />
-        </div>
+        {/*<div*/}
+        {/*  */}
+        {/*  className="snap-start"*/}
+        {/*>*/}
+        {/*  <CardsSection />*/}
+        {/*</div>*/}
         <section
           
           className="snap-start"

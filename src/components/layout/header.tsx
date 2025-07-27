@@ -10,7 +10,6 @@ import {
   Info,
   Briefcase,
   HeartHandshake,
-  LineChart,
 } from "lucide-react";
 
 export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
@@ -20,10 +19,9 @@ export const Header = ({ hasScrolled }: { hasScrolled: boolean }) => {
 
   const menuItems = [
     { name: "Home", icon: Home, href: "/" },
-    { name: "About Company", icon: Info, href: "/about" },
-    { name: "Major Business", icon: Briefcase, href: "/business" },
-    { name: "Sustainability", icon: HeartHandshake, href: "/sustainability" },
-    { name: "Investments", icon: LineChart, href: "/investment" },
+    { name: "What we supply", icon: Info, href: "#" },
+    { name: "Why Farmnegy", icon: Briefcase, href: "#" },
+    { name: "business@farmnegy.com", icon: HeartHandshake, href: "#" },
   ];
 
   return (
