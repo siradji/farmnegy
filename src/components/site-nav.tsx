@@ -20,7 +20,7 @@ export function SiteNav() {
       <div className="flex justify-between items-center h-20 px-8 w-full max-w-screen-2xl mx-auto">
         <Link href="/" className="flex items-center">
           <Image
-            src="/farmnegy-all-black.PNG"
+            src="/farmnegy-white.PNG"
             alt="Farmnegy International"
             width={160}
             height={40}
